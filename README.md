@@ -1,23 +1,22 @@
 # SauceDemo BDD — Lessons 12–13
 
-Practice framework using Python, Playwright, pytest-bdd
-and the Page Object Model.
+Python test automation framework using Playwright, pytest, pytest-bdd,
+Page Object Model, Faker, and Allure.
 
-## Implemented scenarios
+## Implemented coverage
 
-- Successful login reaches the inventory page.
-- Locked out login shows an error and stays on the login page.
-- Backpack is added to the cart and verified.
-- Scenario Outline checks two products: Backpack and Bike Light.
+- Successful login and locked-out user rejection.
+- Product catalog: six products and the expected backpack.
+- Adding a backpack to the cart and verifying its presence.
+- Data-driven cart checks for Backpack and Bike Light.
+- Data-driven login for five allowed users.
+- Five invalid or missing credential combinations.
+- Complete backpack checkout with generated customer information.
+- Shared BDD steps and reusable page-object fixtures.
+- Hooks logging scenario start/end, step start/success, and step errors.
+- A smoke tag for the complete checkout scenario.
 
-The project also retains the pytest tests from Lesson 11.
-
-## Structure
-
-- features/ — Gherkin scenarios and Examples tables
-- tests/ — pytest tests and BDD step definitions
-- pages/ — Page Objects
-- conftest.py — fixtures and logging hooks
+The project also retains four plain pytest tests from Lesson 11.
 
 ## Setup
 
@@ -28,37 +27,61 @@ uv sync
 uv run playwright install chromium
 ```
 
-Create a local .env file in the project root:
+Create a local `.env` file in the project root:
 
 ```text
-STANDARD_USER=<username>/<password>
-LOCKED_OUT_USER=<username>/<password>
+STANDARD_USER=standard_user/secret_sauce
+LOCKED_OUT_USER=locked_out_user/secret_sauce
+PROBLEM_USER=problem_user/secret_sauce
+PERFORMANCE_GLITCH_USER=performance_glitch_user/secret_sauce
+ERROR_USER=error_user/secret_sauce
+VISUAL_USER=visual_user/secret_sauce
 ```
 
-Use the demo credentials displayed on https://www.saucedemo.com.
-The .env file is excluded from Git.
+These are public SauceDemo practice credentials.
+The `.env` file is excluded from Git.
 
-## Run all BDD tests
+## Run all tests
 
 ```bash
-uv run pytest tests/test_login_bdd.py tests/test_inventory_bdd.py tests/test_inventory_data_driven.py -v
+uv run pytest -v
 ```
 
-## Logging
+## Run data-driven login tests
 
-Hooks log scenario start/end, step start/success and step errors.
-Output: logs/bdd_run.log.
+```bash
+uv run pytest tests/test_login_data_driven.py -v
+```
 
-Step argument values and passwords are not logged.
-Generated logs are excluded from Git.
+## Run the smoke test
 
-## Verified result
+```bash
+uv run pytest -m smoke -v
+```
 
-5 BDD test cases passed together locally in Chromium.
-Scenario and step logging was verified.
+## Reports and logs
 
-## Additional practice project
+- Allure results: `allure-results/`
+- BDD hook log: `logs/bdd_run.log`
+- General test log: `logs/test_run.log`
+- Screenshots on failure: `artifacts/`
 
+Generated reports, logs, and artifacts are excluded from Git.
+
+## Verified locally
+
+- Full suite: 21 passed — 17 BDD cases and 4 plain pytest tests.
+- Smoke selection: 1 passed, 20 deselected.
+- Browser: Chromium.
+
+These results describe the local verification run.
+
+## Related homework repositories
+
+Lesson 11 — SauceDemo pytest framework:
+https://github.com/evgeniizoteev/saucedemo-framework-ez
+
+Additional Lesson 12 practice — The Internet BDD framework:
 https://github.com/evgeniizoteev/the-internet-bdd-ez
 
-Two login scenarios passed together in that project.
+The additional project contains two login scenarios that passed together locally.
