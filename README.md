@@ -9,6 +9,7 @@ and the Page Object Model.
 - Locked out user sees an error and remains on the login page.
 - Gherkin: features/login.feature
 - Python step definitions: tests/test_login_bdd.py
+- Standard user adds a backpack to the cart and verifies its presence.
 
 The project also retains the pytest tests from Lesson 11.
 
@@ -39,10 +40,9 @@ uv run pytest tests/test_login_bdd.py -v
 
 ## Verified result
 
-Both BDD login tests passed locally in Chromium: 2 passed.
+All three BDD scenarios passed locally in Chromium: 3 passed.
 
 ## Homework progress
 
-Two BDD login scenarios implemented: successful and locked out login.
-Additional BDD coverage and a framework for another practice
-website are still pending.
+BDD login and inventory scenarios implemented.
+A framework for another practice website is still pending.
