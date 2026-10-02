@@ -1,17 +1,23 @@
-# SauceDemo BDD — Lesson 12
+# SauceDemo BDD — Lessons 12–13
 
-Lesson 12 homework using Python, Playwright, pytest-bdd,
+Practice framework using Python, Playwright, pytest-bdd
 and the Page Object Model.
 
-## Implemented BDD scenario
+## Implemented scenarios
 
-- Standard user logs in and reaches the inventory page.
-- Locked out user sees an error and remains on the login page.
-- Gherkin: features/login.feature
-- Python step definitions: tests/test_login_bdd.py
-- Standard user adds a backpack to the cart and verifies its presence.
+- Successful login reaches the inventory page.
+- Locked out login shows an error and stays on the login page.
+- Backpack is added to the cart and verified.
+- Scenario Outline checks two products: Backpack and Bike Light.
 
 The project also retains the pytest tests from Lesson 11.
+
+## Structure
+
+- features/ — Gherkin scenarios and Examples tables
+- tests/ — pytest tests and BDD step definitions
+- pages/ — Page Objects
+- conftest.py — fixtures and logging hooks
 
 ## Setup
 
@@ -32,17 +38,27 @@ LOCKED_OUT_USER=<username>/<password>
 Use the demo credentials displayed on https://www.saucedemo.com.
 The .env file is excluded from Git.
 
-## Run the BDD test
+## Run all BDD tests
 
 ```bash
-uv run pytest tests/test_login_bdd.py -v
+uv run pytest tests/test_login_bdd.py tests/test_inventory_bdd.py tests/test_inventory_data_driven.py -v
 ```
+
+## Logging
+
+Hooks log scenario start/end, step start/success and step errors.
+Output: logs/bdd_run.log.
+
+Step argument values and passwords are not logged.
+Generated logs are excluded from Git.
 
 ## Verified result
 
-All three BDD scenarios passed locally in Chromium: 3 passed.
+5 BDD test cases passed together locally in Chromium.
+Scenario and step logging was verified.
 
-## Homework progress
+## Additional practice project
 
-BDD login and inventory scenarios implemented.
-A framework for another practice website is still pending.
+https://github.com/evgeniizoteev/the-internet-bdd-ez
+
+Two login scenarios passed together in that project.
