@@ -6,6 +6,7 @@ and the Page Object Model.
 ## Implemented BDD scenario
 
 - Standard user logs in and reaches the inventory page.
+- Locked out user sees an error and remains on the login page.
 - Gherkin: features/login.feature
 - Python step definitions: tests/test_login_bdd.py
 
@@ -38,10 +39,10 @@ uv run pytest tests/test_login_bdd.py -v
 
 ## Verified result
 
-The BDD login test passed locally in Chromium: 1 passed.
+Both BDD login tests passed locally in Chromium: 2 passed.
 
 ## Homework progress
 
-Initial BDD scenario implemented.
-Additional BDD scenarios and a framework for another practice
+Two BDD login scenarios implemented: successful and locked out login.
+Additional BDD coverage and a framework for another practice
 website are still pending.
