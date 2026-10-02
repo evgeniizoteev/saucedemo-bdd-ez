@@ -20,6 +20,9 @@ target-version = ["py311"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = [
+    "smoke: checks the main purchase flow",
+]
 addopts = [
     "-v",
     "--browser=chromium",
