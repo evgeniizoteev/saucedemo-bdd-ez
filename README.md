@@ -1,43 +1,47 @@
-# Sauce Demo Test Automation Framework
+# SauceDemo BDD — Lesson 12
 
-UI test automation framework for https://www.saucedemo.com/.
+Lesson 12 homework using Python, Playwright, pytest-bdd,
+and the Page Object Model.
 
-The project uses Python, Playwright, pytest, Page Object Model, Faker, logging, and Allure reports.
+## Implemented BDD scenario
 
-## Project structure
+- Standard user logs in and reaches the inventory page.
+- Gherkin: features/login.feature
+- Python step definitions: tests/test_login_bdd.py
 
-- `pages/` — locators and page actions
-- `tests/` — test scenarios and assertions
-- `data/` — test users and product data
-- `helpers/` — reusable test-data helpers
-- `conftest.py` — pytest fixtures and reporting hooks
-- `.env.example` — safe credentials template
+The project also retains the pytest tests from Lesson 11.
 
 ## Setup
 
+Install uv, then run:
+
 ```bash
 uv sync
-cp .env.example .env
 uv run playwright install chromium
 ```
 
-Add valid local test credentials to `.env`. Never commit `.env`.
+Create a local .env file in the project root:
 
-## Run tests
-
-```bash
-uv run pytest
-uv run pytest --headed
-uv run pytest --headed --slowmo 800
+```text
+STANDARD_USER=<username>/<password>
+LOCKED_OUT_USER=<username>/<password>
 ```
 
-## Code quality
+Use the demo credentials displayed on https://www.saucedemo.com.
+The .env file is excluded from Git.
+
+## Run the BDD test
 
 ```bash
-uvx black --check .
-uvx flake8 .
+uv run pytest tests/test_login_bdd.py -v
 ```
 
-## Reports and logs
+## Verified result
 
-Test runs create local Allure results, an HTML report, screenshots on failure, and logs. Generated artifacts are excluded from Git.
+The BDD login test passed locally in Chromium: 1 passed.
+
+## Homework progress
+
+Initial BDD scenario implemented.
+Additional BDD scenarios and a framework for another practice
+website are still pending.
