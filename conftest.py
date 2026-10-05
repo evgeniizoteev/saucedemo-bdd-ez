@@ -109,9 +109,10 @@ def pytest_bdd_after_scenario(request, feature, scenario):
 
 def pytest_bdd_before_step(request, feature, scenario, step, step_func):
     bdd_logger.info(
-        "STEP START | type=%s | function=%s",
+        "STEP START | type=%s | function=%s | text=%s",
         step.type,
         step_func.__name__,
+        step.name,
     )
 
 

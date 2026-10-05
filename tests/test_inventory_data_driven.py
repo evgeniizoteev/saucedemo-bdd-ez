@@ -20,8 +20,8 @@ def verify_cart_count(inventory_page, count):
 
 
 @when("the user navigates to the shopping cart")
-def navigate_to_cart(inventory_page):
-    inventory_page.open_cart()
+def navigate_to_cart(cart_page):
+    cart_page.open_cart()
 
 
 @then(parsers.parse('the selected product "{product_name}" is in the cart'))
@@ -30,3 +30,13 @@ def verify_selected_product(inventory_page, product_name):
     expect(inventory_page.item_names.filter(has_text=product_name)).to_have_text(
         product_name
     )
+
+
+@then(parsers.parse("the cart contains {count:d} products"))
+def verify_cart_product_count(cart_page, count):
+    expect(cart_page.item_names).to_have_count(count)
+
+
+@when(parsers.parse('the user removes the selected product "{product_name}"'))
+def remove_selected_product(cart_page, product_name):
+    cart_page.remove_product(product_name)
