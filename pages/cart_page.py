@@ -11,3 +11,7 @@ class CartPage(BasePage):
 
     def checkout(self) -> None:
         self.click(self.checkout_button)
+
+    def remove_product(self, product_name: str) -> None:
+        slug = product_name.lower().replace(" ", "-")
+        self.click(self.page.locator(f"[data-test='remove-{slug}']"))
