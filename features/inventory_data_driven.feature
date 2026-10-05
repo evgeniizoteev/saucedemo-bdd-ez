@@ -20,5 +20,6 @@ Feature: Data-driven inventory
     And the user adds the selected product "Sauce Labs Bike Light"
     Then the shopping cart badge shows "2"
     When the user navigates to the shopping cart
-    Then the selected product "Sauce Labs Backpack" is in the cart
+    Then the cart contains 2 products
+    And the selected product "Sauce Labs Backpack" is in the cart
     And the selected product "Sauce Labs Bike Light" is in the cart

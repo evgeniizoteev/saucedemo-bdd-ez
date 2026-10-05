@@ -30,3 +30,8 @@ def verify_selected_product(inventory_page, product_name):
     expect(inventory_page.item_names.filter(has_text=product_name)).to_have_text(
         product_name
     )
+
+
+@then(parsers.parse("the cart contains {count:d} products"))
+def verify_cart_product_count(inventory_page, count):
+    expect(inventory_page.item_names).to_have_count(count)
