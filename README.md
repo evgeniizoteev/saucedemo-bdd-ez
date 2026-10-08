@@ -1,4 +1,4 @@
-# SauceDemo BDD — Lessons 12–13
+# SauceDemo BDD — Lessons 12–13 and Practice
 
 Python test automation framework using Playwright, pytest, pytest-bdd,
 Page Object Model, Faker, and Allure.
@@ -8,15 +8,21 @@ Page Object Model, Faker, and Allure.
 - Successful login and locked-out user rejection.
 - Product catalog: six products and the expected backpack.
 - Adding a backpack to the cart and verifying its presence.
-- Data-driven cart checks for Backpack and Bike Light.
+- Data-driven cart checks for Backpack, Bike Light, and Bolt T-Shirt.
+- Adding two products and verifying their names and the cart count.
+- Removing the only product and verifying an empty cart.
+- Removing one of two products and verifying the remaining product.
 - Data-driven login for five allowed users.
 - Five invalid or missing credential combinations.
 - Complete backpack checkout with generated customer information.
 - Shared BDD steps and reusable page-object fixtures.
 - Hooks logging scenario start/end, step start/success, and step errors.
+- Step text included in STEP START log entries.
 - A smoke tag for the complete checkout scenario.
 
-The project also retains four plain pytest tests from Lesson 11.
+The project also retains four plain pytest UI tests from Lesson 11.
+A separate unit test covers a fixed-amount discount helper created
+during Red → Green → Refactor practice.
 
 ## Setup
 
@@ -47,6 +53,12 @@ The `.env` file is excluded from Git.
 uv run pytest -v
 ```
 
+## Run data-driven cart tests
+
+```bash
+uv run pytest tests/test_inventory_data_driven.py -v
+```
+
 ## Run data-driven login tests
 
 ```bash
@@ -70,11 +82,13 @@ Generated reports, logs, and artifacts are excluded from Git.
 
 ## Verified locally
 
-- Full suite: 21 passed — 17 BDD cases and 4 plain pytest tests.
-- Smoke selection: 1 passed, 20 deselected.
-- Browser: Chromium.
+- Latest recorded full suite: 26 passed.
+- Coverage: 21 BDD cases, 4 plain pytest UI tests, and 1 unit test.
+- The checkout smoke test previously passed.
+- Browser for UI tests: Chromium.
 
-These results describe the local verification run.
+These results describe recorded local runs; tests were not rerun
+for this documentation update.
 
 ## Related homework repositories
 
@@ -84,4 +98,5 @@ https://github.com/evgeniizoteev/saucedemo-framework-ez
 Additional Lesson 12 practice — The Internet BDD framework:
 https://github.com/evgeniizoteev/the-internet-bdd-ez
 
-The additional project contains two login scenarios that passed together locally.
+Lesson 14 — DemoQA API tests:
+https://github.com/evgeniizoteev/demoqa-api-ez
